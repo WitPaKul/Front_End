@@ -27,7 +27,13 @@ h1,h2,h3{
   color: #2c3e50;
 } */
 
-#nav a.router-link-exact-active {
+#nav li a p {
+  border-radius: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#nav li a.router-link-exact-active p {
   color: #FFFFFF;
+  background-color: #1AC6D4;
 }
 </style>

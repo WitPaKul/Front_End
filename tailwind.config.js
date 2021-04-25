@@ -28,6 +28,9 @@ module.exports = {
     },
       green: 'green',
       red: 'red'
+    },
+    borderRadius: {
+      DEFAULT: '50px'
     }
   },
   variants: {

@@ -5,7 +5,7 @@
             <div>
                 <router-link to="/">
                     <!-- <img src="" class="header-logo max-h-14" title="Witpakul Shop Official"> -->
-                        <p class="font-semibold text-xl text-black p-28">Witpakul Shop</p>
+                        <p class="font-semibold text-xl text-black px-28">Witpakul Shop</p>
                 </router-link>
             </div>
             <div>

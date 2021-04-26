@@ -27,17 +27,17 @@ export default {
         {
           idname: "62130500074",
           myname: "Pawat Munkong",
-          rolls: "details : เทพ",
+          rolles: "details : เทพ",
         },
         {
           idname: "62130500082",
           myname: "Worawit Makkasan",
-          rolls: "details : กุ๊กๆๆๆ",
+          roles: "sdetails : กุ๊กๆๆๆ",
         },
         {
           idname: "62130500090",
           myname: "Sakulthip Rassameecharoentham",
-          rolls: "details : หยกกกกกก",
+          roles: "details : หยกกกกกก",
         },
       ],
     };

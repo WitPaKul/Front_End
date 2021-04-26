@@ -1,6 +1,7 @@
 <template>
   <navbar></navbar>
   <slide-about></slide-about>
+  <footerbar></footerbar>
 </template>
 
 <script>

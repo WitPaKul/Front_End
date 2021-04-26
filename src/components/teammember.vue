@@ -8,10 +8,9 @@
         <img
           class="object-cover object-center rounded"
           alt="hero"
-          src="https://dummyimage.com/720x600"
-        />
+          src="https://dummyimage.com/720x600">
       </div>
-      <!--  -->
+     
       <div
         class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center"
       >

@@ -25,9 +25,9 @@
           {{ member.myname }}
         </h1>
         <h3
-          class="title-font sm:text-2xl text-3xl mb-4 font-medium text-purple-dark"
+          class="title-font sm:text-2xl text-3xl mb-4 font-medium text-"
         >
-          {{ member.rolls }}
+          {{ member.roles }}
         </h3>
       </div>
     </div>
@@ -43,10 +43,7 @@ export default {
 
 <style scoped>
 @import "https://fonts.googleapis.com/css?family=Mitr";
-h1,
-h2,
-h3,
-p {
+h1,h2,h3,p {
   font-family: "Mitr", sans-serif;
 }
 </style>

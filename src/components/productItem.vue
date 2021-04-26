@@ -18,7 +18,7 @@ export default {
         brandName: String,
         productName: String,
         productPrice: Number
-    }
+    },
 }
 </script>
 

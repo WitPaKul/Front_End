@@ -27,7 +27,7 @@ export default {
         {
           idname: "62130500074",
           myname: "Pawat Munkong",
-          rolles: "details : เทพ",
+          roles: "details : เทพ",
         },
         {
           idname: "62130500082",

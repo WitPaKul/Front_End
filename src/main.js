@@ -3,7 +3,9 @@ import App from './App.vue'
 import router from './router'
 import './assets/tailwind.css'
 import navbar from './components/navbar.vue'
+import footerbar from './components/footerbar.vue'
 
 const app = createApp(App)
 app.component('navbar', navbar)
+app.component('footerbar', footerbar)
 app.use(router).mount('#app')

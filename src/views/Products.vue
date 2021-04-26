@@ -1,6 +1,7 @@
 <template>
   <navbar></navbar>
   <product-items></product-items>
+  <footerbar></footerbar>
 </template>
 
 <script>

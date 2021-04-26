@@ -9,6 +9,7 @@
       :member="member"
     ></teammember>
   </div>
+  <footerbar></footerbar>
 </template>
 
 

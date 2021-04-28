@@ -54,11 +54,8 @@ export default {
             }
             return products
         },
-        handleViewProducts() {
-            console.log("handleViewProducts");
-        },
         handleAddProduct() {
-            console.log("handleAddProduct");
+            this.$emit("handleAddProductEmit");
         }
     },
     mounted() {

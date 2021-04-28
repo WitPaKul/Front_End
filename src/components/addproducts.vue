@@ -1,6 +1,19 @@
 <template>
 
-<section class="text-gray-900  body-font overflow-hidden">
+<section class="text-gray-900 body-font overflow-hidden px-20">
+  <div class="h-12 md:items-center">
+    <div class="p-5 pl-20 text-purple-dark md:float-left flex">
+      <button type='button' @click="handleViewProducts" class="font-medium text-xl text-purple-dark">
+        View Products
+      </button>
+    <div class="px-7 text-gray-light font-bold">
+      |
+    </div>
+      <button type='button' @click="handleAddProduct" class="font-medium text-xl text-purple-dark">
+        Add Product
+      </button>
+    </div>
+  </div>
   <div class="container px-5 py-24 mx-auto">
     <div class="lg:w-4/5 mx-auto flex flex-wrap">    
       <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/800x800">
@@ -53,13 +66,18 @@
 <script>
 export default {
   name: "addproducts",
-
+  methods: {
+    handleViewProducts() {
+      console.log("handleViewProducts");
+      this.$emit("handleViewProductsEmit");
+    }
+  },
 };
 </script>
 
 <style scoped>
 @import "https://fonts.googleapis.com/css?family=Mitr";
-h1,h2,h3,p {
+h1,h2,h3,section {
   font-family: "Mitr", sans-serif;
 }
 </style>

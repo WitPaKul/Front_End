@@ -1,4 +1,12 @@
+
+
 # witpakul-project
+
+## Figma
+```
+https://www.figma.com/file/Og8E1M7DqfX3SWMBFhZENz/INT221WitPaKul?node-id=0%3A1
+```
+
 
 ## Project setup
 ```

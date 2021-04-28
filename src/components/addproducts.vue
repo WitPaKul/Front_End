@@ -41,8 +41,8 @@
         <input type="file" id="product-photo" name="product-photo" accept="image/png, image/jpeg, image/gif">
      </div>
       <div class="flex mt-6">
-          <button class="flex ml-auto text-white  bg-blue-400 border-0 py-2 px-6 focus:outline-none hover:bg-blue-500 rounded">Add</button>
-        <button class=" flex-initial text-white ml-4  bg-red-400 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Cancel</button>
+          <button class="flex ml-auto text-white  bg-blue border-0 py-2 px-6 focus:outline-none hover:bg-blue-500 rounded">Add</button>
+        <button class=" flex-initial text-white ml-4  bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Cancel</button>
         </div>
       </div>
     </div>

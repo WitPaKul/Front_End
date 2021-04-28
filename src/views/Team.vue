@@ -33,7 +33,7 @@ export default {
         {
           idname: "62130500082",
           myname: "Worawit Makkasan",
-          roles: "sdetails : กุ๊กๆๆๆ",
+          roles: "details : กุ๊กๆๆๆ",
         },
         {
           idname: "62130500090",

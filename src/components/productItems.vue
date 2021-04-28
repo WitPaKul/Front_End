@@ -2,18 +2,18 @@
     <section class="text-black body-font px-20">
         <div class="h-12 md:items-center">
             <div class="p-5 pl-20 text-purple-dark md:float-left flex">
-                <button type='button' @click="handleViewProducts" class="font-medium text-xl text-purple-dark">
+                <button type='button' @click="handleViewProducts" class="font-medium text-xl text-purple-dark border-transparent focus:outline-none">
                     View Products
                 </button>
                 <div class="px-7 text-gray-light font-bold">
                     |
                 </div>
-                <button type='button' @click="handleAddProduct" class="font-medium text-xl text-purple-dark">
+                <button type='button' @click="handleAddProduct" class="font-medium text-xl text-purple-dark border-transparent focus:outline-none">
                     Add Product
                 </button>
             </div>
             <div class="p-5 md:float-right pr-16">
-                <input type="text" id="search" v-model="search" name="search" class="bg-blue-light rounded md:px-16 md:py-2">
+                <input type="text" id="search" v-model="search" name="search" class="bg-blue-light rounded md:px-16 md:py-2 border-transparent focus:outline-none">
             </div>
         </div>
         <div class="container px-5 py-12 mx-auto">

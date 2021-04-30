@@ -13,12 +13,12 @@
                 </button>
             </div>
             <div class="p-5 md:float-right pr-16">
-                <input type="text" id="search" v-model="search" name="search" class="bg-blue-light rounded md:px-16 md:py-2 border-transparent focus:outline-none">
+                <input type="text" id="search" v-model="searchFilterText" name="search" class="bg-blue-light rounded md:px-16 md:py-2 border-transparent focus:outline-none">
             </div>
         </div>
         <div class="container px-5 py-12 mx-auto">
             <div id="products" class="flex flex-wrap -m-4">
-                <product-item v-for="product in products" :key="product.id" :brand-name="product.brandName" :product-name="product.productName" :product-price="product.productPrice"></product-item>
+                <product-item v-for="product in filterSearch()" :key="product.id" :brand-name="product.brandName" :product-name="product.productName" :product-price="product.productPrice"></product-item>
             </div>
         </div>
     </section>
@@ -31,6 +31,7 @@ export default {
     data() {
         return {
             products: [],
+            searchFilterText: '',
         }
     },
     components: {
@@ -58,7 +59,18 @@ export default {
         },
         handleAddProduct() {
             this.$emit("handleAddProductEmit");
-        }
+        },
+        filterSearch() {
+            var splitTexts = this.searchFilterText.split(" ");
+            splitTexts = splitTexts.filter(splitText => {return splitText !== ""});
+            if (this.searchFilterText === "" || splitTexts.length === 0) {
+                return this.products
+            }
+
+            return this.products.filter(product => {
+                return splitTexts.some(splitText => product.productName.toLowerCase().includes(splitText.toLowerCase()))
+            });
+        },
     },
     mounted() {
         this.products = this.getProducts()

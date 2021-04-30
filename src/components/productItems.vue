@@ -41,9 +41,11 @@ export default {
     },
     methods: {
         getProduct(productIdx) {
+            var arr1 = ["ShiragaP", "Peony"];
+            var arr2 = ["Crepe", "Cake", "Brownie", "Icecream"];
             return {
                 "brandName": "PRISMA",
-                "productName": productIdx + " " + "ShiragaP 1st album Initializing()",
+                "productName": productIdx + " " + arr1[Math.floor(Math.random() * arr1.length)] + " " + arr2[Math.floor(Math.random() * arr2.length)],
                 "productPrice": 390
             };
         },

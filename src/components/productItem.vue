@@ -5,7 +5,11 @@
         </a>
         <div class="mt-4">
         <h3 class="text-black text-sm tracking-widest title-font mb-1 text-left">{{brandName}}</h3>
-        <h2 class="text-black title-font text-lg font-medium text-left">{{productName}}</h2>
+        
+        <button type='button' @click="handleShowProduct" class="font-medium text-xl text-purple-dark border-transparent focus:outline-none">
+            <h2 class="text-black title-font text-lg font-medium text-left">{{productName}}</h2>
+        </button>
+                
         <p class="text-xl font-medium text-purple-dark text-right">฿{{productPrice}}</p>
         </div>
     </div>
@@ -15,10 +19,16 @@
 export default {
     name: 'productItem',
     props:{
+        product: {},
         brandName: String,
         productName: String,
         productPrice: Number
     },
+    methods: {
+        handleShowProduct() {
+            this.$emit("handleShowProductEmit", this.product);
+        },
+    }
 }
 </script>
 

@@ -27,13 +27,11 @@ export default {
   },
   methods: {
     handleViewProducts(){
-      console.log('handleAddProduct parent');
       this.viewProductsFlag = true;
       this.addProductFlag = false;
       this.showProductFlag = false;
     },
     handleAddProduct(){
-      console.log('handleAddProduct parent');
       this.viewProductsFlag = false;
       this.addProductFlag = true;
       this.showProductFlag = false;
@@ -43,7 +41,6 @@ export default {
       this.viewProductsFlag = false;
       this.addProductFlag = false;
       this.showProductFlag = true;
-      console.log('handleShowProduct parent');
     }
   }
 };

@@ -47,7 +47,6 @@
             <button v-if="product.product_colors.filter(color => {return color.color_name=='PINK'}).length" class="border-2 border-gray-300 ml-1 bg-pink-500 rounded-full w-6 h-6 focus:outline-none"></button>
             <button v-if="product.product_colors.filter(color => {return color.color_name=='ORANGE'}).length" class="border-2 border-gray-300 ml-1 bg-yellow-600 rounded-full w-6 h-6 focus:outline-none"></button>
             <button v-if="product.product_colors.filter(color => {return color.color_name=='BLACK'}).length" class="border-2 border-gray-300 ml-1 bg-black rounded-full w-6 h-6 focus:outline-none"></button>
-
           </div>
         </div>
         <div class="flex ">
@@ -74,9 +73,6 @@ export default {
     handleAddProduct() {
         this.$emit("handleAddProductEmit");
     },
-  },
-  mounted() {
-      console.log(this.product.product_colors)
   }
 };
 </script>

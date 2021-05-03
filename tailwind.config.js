@@ -28,7 +28,8 @@ module.exports = {
           DEFAULT: 'FFFFFF'
         },
         green: 'green',
-        red: 'red'
+    
+        
       },
     },
     borderRadius: {

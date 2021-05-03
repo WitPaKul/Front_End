@@ -38,15 +38,15 @@
         <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
           <div class="flex">
             <span class="mr-3">Color</span>
-            <button v-if="product.product_colors.filter(color => {return color.color_name=='RED'}).length" class="border-2 border-gray-300 ml-1 bg-red-500 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button v-if="product.product_colors.filter(color => {return color.color_name=='BLUE'}).length" class="border-2 border-gray-300 ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button v-if="product.product_colors.filter(color => {return color.color_name=='GREEN'}).length" class="border-2 border-gray-300 ml-1 bg-green-500 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button v-if="product.product_colors.filter(color => {return color.color_name=='YELLOW'}).length" class="border-2 border-gray-300 ml-1 bg-yellow-400 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button v-if="product.product_colors.filter(color => {return color.color_name=='PURPLE'}).length" class="border-2 border-gray-300 ml-1 bg-purple-500 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button v-if="product.product_colors.filter(color => {return color.color_name=='WHITE'}).length" class="border-2 border-gray-300 ml-1 bg-white rounded-full w-6 h-6 focus:outline-none"></button>
-            <button v-if="product.product_colors.filter(color => {return color.color_name=='PINK'}).length" class="border-2 border-gray-300 ml-1 bg-pink-500 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button v-if="product.product_colors.filter(color => {return color.color_name=='ORANGE'}).length" class="border-2 border-gray-300 ml-1 bg-yellow-600 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button v-if="product.product_colors.filter(color => {return color.color_name=='BLACK'}).length" class="border-2 border-gray-300 ml-1 bg-black rounded-full w-6 h-6 focus:outline-none"></button>
+            <button v-if="product.product_colors.filter(color => {return color.color_name=='RED'}).length" @click="handleColor('red')" :class="{'border-green-500': color=='red'}" class="border-2 border-gray-300 ml-1 bg-red-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button v-if="product.product_colors.filter(color => {return color.color_name=='BLUE'}).length"  @click="handleColor('blue')" :class="{'border-green-500': color=='blue'}" class="border-2 border-gray-300 ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button v-if="product.product_colors.filter(color => {return color.color_name=='GREEN'}).length"  @click="handleColor('green')" :class="{'border-green-500': color=='green'}" class="border-2 border-gray-300 ml-1 bg-green-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button v-if="product.product_colors.filter(color => {return color.color_name=='YELLOW'}).length"  @click="handleColor('yellow')" :class="{'border-green-500': color=='yellow'}" class="border-2 border-gray-300 ml-1 bg-yellow-400 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button v-if="product.product_colors.filter(color => {return color.color_name=='PURPLE'}).length"  @click="handleColor('purple')" :class="{'border-green-500': color=='purple'}" class="border-2 border-gray-300 ml-1 bg-purple-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button v-if="product.product_colors.filter(color => {return color.color_name=='WHITE'}).length"  @click="handleColor('white')" :class="{'border-green-500': color=='white'}" class="border-2 border-gray-300 ml-1 bg-white rounded-full w-6 h-6 focus:outline-none"></button>
+            <button v-if="product.product_colors.filter(color => {return color.color_name=='PINK'}).length"  @click="handleColor('pink')" :class="{'border-green-500': color=='pink'}" class="border-2 border-gray-300 ml-1 bg-pink-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button v-if="product.product_colors.filter(color => {return color.color_name=='ORANGE'}).length"  @click="handleColor('orange')" :class="{'border-green-500': color=='orange'}" class="border-2 border-gray-300 ml-1 bg-yellow-600 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button v-if="product.product_colors.filter(color => {return color.color_name=='BLACK'}).length"  @click="handleColor('black')" :class="{'border-green-500': color=='black'}" class="border-2 border-gray-300 ml-1 bg-black rounded-full w-6 h-6 focus:outline-none"></button>
           </div>
         </div>
         <div class="flex ">
@@ -65,6 +65,11 @@ export default {
   props:{
     product: null
   },
+  data() {
+    return {
+      color: ''
+    }
+  },
   name: "producttemplate",
   methods: {
     handleViewProducts() {
@@ -73,6 +78,9 @@ export default {
     handleAddProduct() {
         this.$emit("handleAddProductEmit");
     },
+    handleColor(color) {
+      this.color = color
+    }
   }
 };
 </script>

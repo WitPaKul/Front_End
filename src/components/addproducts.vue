@@ -18,11 +18,11 @@
     <div class="lg:w-4/5 mx-auto flex flex-wrap"> 
       <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"  :src="image || 'https://dummyimage.com/800x800'">
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-        <!--BRAND -->
-        <h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>   
-            <h2 v-if="errors.indexOf('NoBrandName') !== -1"  class="text-sm title-font text-red-600" >* Please Enter Brand Name</h2>
+        <!--PRODUCT -->
+        <h2 class="text-sm title-font text-gray-500 tracking-widest">PRODUCT NAME</h2>   
+            <h2 v-if="errors.indexOf('NoProductName') !== -1"  class="text-sm title-font text-red-600" >* Please Enter Product Name</h2>
          <div class="flex mb-4">
-        <input v-model="collectdata.brandname" type="text" name="product-name" id="product-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm border border-gray-400 rounded-md">
+        <input v-model="collectdata.product_name" type="text" name="product-name" id="product-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm border border-gray-400 rounded-md">
         </div>
    <!-- Manufacturer Date -->
   
@@ -30,7 +30,7 @@
        <h2 v-if="errors.indexOf('NoDate') !== -1" class="text-sm title-font text-red-600 ">* Please Enter Date</h2>
     
       <div class="flex mb-4">
-      <input v-model="collectdata.date" type="date" name="manufacturer-date" id="manufacturer-date" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm border border-gray-400 rounded-md">
+      <input v-model="collectdata.product_manufactured_date" placeholder="dd-mm-yyyy" type="date" name="manufacturer-date" id="manufacturer-date" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm border border-gray-400 rounded-md">
       </div>
       <!-- Description -->
     <div class="flex ">
@@ -38,23 +38,28 @@
              <h2 v-if="errors.indexOf('Description') !== -1" class="text-sm title-font pl-4 text-red-600">* Please Enter Description</h2>         
              </div>
           <div class="flex mt-4 ">    
-            <textarea v-model="collectdata.description" class="w-full  focus:ring-indigo-500 focus:border-gray-900 block  h-32 text-base outline-none text-gray-700 py-1 px-3 shadow-sm border border-gray-400 rounded-md"></textarea>
+            <textarea v-model="collectdata.product_description" class="w-full  focus:ring-indigo-500 focus:border-gray-900 block  h-32 text-base outline-none text-gray-700 py-1 px-3 shadow-sm border border-gray-400 rounded-md"></textarea>
      </div>
      
        <!--Color  -->
         <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
           <div class="flex">
-            <h2 class="mr-3 text-sm title-font text-gray-500 tracking-widest">Color</h2>
-            <button  class="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button class="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button class="border-2 border-gray-300 ml-1 bg-indigo-500 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button  class="border-2 border-gray-300 ml-1 bg-yellow-500 rounded-full w-6 h-6 focus:outline-none"> </button>        
+            <span class="mr-3">Color</span>
+            <button @click="handleColor(1, 'red')" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_name == 'red'}).length}" class="border-2 border-gray-300 ml-1 bg-red-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button @click="handleColor(2, 'blue')" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_name == 'blue'}).length}" class="border-2 border-gray-300 ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button @click="handleColor(3, 'green')" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_name == 'green'}).length}" class="border-2 border-gray-300 ml-1 bg-green-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button @click="handleColor(4, 'yellow')" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_name == 'yellow'}).length}" class="border-2 border-gray-300 ml-1 bg-yellow-400 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button @click="handleColor(5, 'purple')" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_name == 'purple'}).length}" class="border-2 border-gray-300 ml-1 bg-purple-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button @click="handleColor(6, 'white')" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_name == 'white'}).length}" class="border-2 border-gray-300 ml-1 bg-white rounded-full w-6 h-6 focus:outline-none"></button>
+            <button @click="handleColor(7, 'pink')" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_name == 'pink'}).length}" class="border-2 border-gray-300 ml-1 bg-pink-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button @click="handleColor(8, 'orange')" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_name == 'orange'}).length}" class="border-2 border-gray-300 ml-1 bg-yellow-600 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button @click="handleColor(9, 'black')" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_name == 'black'}).length}" class="border-2 border-gray-300 ml-1 bg-black rounded-full w-6 h-6 focus:outline-none"></button>
           </div>
         </div>
         <!-- Price -->
         <div class="flex ">          
         <h2 class="text-sm title-font text-gray-500 tracking-widest">Price</h2> 
-        <input v-model="collectdata.price" type="text" name="product-name" id="product-name" class="ml-4  shadow-sm border border-gray-400 rounded-md">
+        <input v-model="collectdata.product_price" type="text" name="product-price" id="product-price" class="ml-4  shadow-sm border border-gray-400 rounded-md">
       <h2 v-if="errors.indexOf('Noprice') !== -1" class="text-sm title-font text-red-600 pl-4 ">* Please Enter Price</h2>         
      </div>
      <!-- Photo -->
@@ -77,66 +82,82 @@
 </template>
 
 <script>
+const baseURL = "http://localhost:5000"
+
 export default {
   name: "addproducts",
 
 data() {
         return {
           errors: [],
-            image:""   ,  
-           collectdata: {
-                img : null,
-                brandname: null,
-                date: null,
-                description : null,
-                price: null,
-            }, 
-
+          image:""   ,  
+          collectdata: {
+              product_images : null,
+              product_name: null,
+              product_manufactured_date: null,
+              product_description : null,
+              product_price: null,
+              product_colors: []
+          },
         }
     },
 
   methods: {
     handleViewProducts() {
-      console.log("handleViewProducts");
       this.$emit("handleViewProductsEmit");
     },
-
-  uploadImage(event){
+    uploadImage(event) {
             var input = event.target
-            this.collectdata.img  = input.files[0].name;
-            console.log(this.collectdata.img)
+            this.collectdata.product_images  = input.files[0].name;
             if(input.files && input.files[0]){
                 var reader = new FileReader();
                 reader.onload = (e) => { this.image = e.target.result; } 
                 reader.readAsDataURL(input.files[0])
             }        
         },  
-        AddForm() {           
-                this.errordata();
-                if (this.errors.length > 0) {
-                    return;
-                }         
-        },
-  
-        errordata() {          
-            this.errors = [];
+    AddForm() {           
+            // this.errordata();
+            // if (this.errors.length > 0) {
+            //     return;
+            // }     
+            fetch(baseURL+"/add_product", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(this.collectdata),
+            });    
+    },
 
-            if(this.collectdata.img == null){
-                this.errors.push("img")
-            }
-             if(this.collectdata.brandname == null){
-                this.errors.push("NoBrandName")
-            }
-               if(this.collectdata.date == null){
-                this.errors.push("NoDate")
-            }
-             if(this.collectdata.description == null){
-                this.errors.push("Description")
-            }
-             if(this.collectdata.price == null){
-                this.errors.push("Noprice")
-            }
-        },
+    errordata() {          
+        this.errors = [];
+
+        if(this.collectdata.product_images == null){
+            this.errors.push("img")
+        }
+          if(this.collectdata.product_name == null){
+            this.errors.push("NoProductName")
+        }
+            if(this.collectdata.product_manufactured_date == null){
+            this.errors.push("NoDate")
+        }
+          if(this.collectdata.product_description == null){
+            this.errors.push("Description")
+        }
+          if(this.collectdata.product_price == null){
+            this.errors.push("Noprice")
+        }
+    },
+        
+    handleColor(color_id, color_name) {
+      if (this.collectdata.product_colors.filter(product_color => {return product_color.color_name == color_name}).length) {
+        this.collectdata.product_colors = this.collectdata.product_colors.filter(product_color => {return product_color.color_name !== color_name});
+      }
+      else {
+        this.collectdata.product_colors.push({color_id: color_id, color_name: color_name});
+      }
+      console.log(this.collectdata.product_colors)
+    }
   },
 };
 </script>

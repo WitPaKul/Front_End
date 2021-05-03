@@ -111,13 +111,11 @@ data() {
                 reader.readAsDataURL(input.files[0])
             }        
         },  
-        AddForm() {
-            if (!this.isEdit) {
+        AddForm() {           
                 this.errordata();
                 if (this.errors.length > 0) {
                     return;
-                }
-            }
+                }         
         },
   
         errordata() {          

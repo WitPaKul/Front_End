@@ -94,13 +94,11 @@ methods: {
                 reader.readAsDataURL(input.files[0])
             }        
         },  
-        SaveForm() {
-            if (!this.isEdit) {
+        SaveForm() {       
                 this.errordata();
                 if (this.errors.length > 0) {
                     return;
-                }
-            }
+                }        
         },
   
         errordata() {          

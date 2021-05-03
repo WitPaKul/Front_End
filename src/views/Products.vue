@@ -2,7 +2,7 @@
   <navbar></navbar>
   <addproducts v-if="addProductFlag" @handleViewProductsEmit="handleViewProducts"></addproducts>
   <product-items v-if="viewProductsFlag" @handleAddProductEmit="handleAddProduct" @handleShowProductEmit="handleShowProduct"></product-items>
-  <producttemplate v-if="showProductFlag" :product=product></producttemplate>
+  <producttemplate v-if="showProductFlag" @handleViewProductsEmit="handleViewProducts" @handleAddProductEmit="handleAddProduct" :product="product"></producttemplate>
   <footerbar></footerbar>
 </template>
 
@@ -22,7 +22,7 @@ export default {
       viewProductsFlag: true,
       addProductFlag: false,
       showProductFlag: false,
-      product: {}
+      product: null
     }
   },
   methods: {
@@ -39,11 +39,11 @@ export default {
       this.showProductFlag = false;
     },
     handleShowProduct(product){
-      console.log('handleShowProduct parent', product);
       this.product = product;
       this.viewProductsFlag = false;
       this.addProductFlag = false;
       this.showProductFlag = true;
+      console.log('handleShowProduct parent');
     }
   }
 };

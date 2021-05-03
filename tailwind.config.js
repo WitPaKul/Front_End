@@ -22,14 +22,10 @@ module.exports = {
           light: '#D2F5F8',
           DEFAULT: '#1AC6D4'
         },
-        black: 'black',
         white: {
           dark: 'F9F9F9',
           DEFAULT: 'FFFFFF'
-        },
-        green: 'green',
-    
-        
+        },        
       },
     },
     borderRadius: {

@@ -28,8 +28,7 @@
           <div class="flex mt-4 ">    
             <textarea v-model="collectdata.description" class="w-full  focus:ring-indigo-500 focus:border-gray-900 block  h-32 text-base outline-none text-gray-700 py-1 px-3 shadow-sm border border-gray-400 rounded-md"></textarea>
      </div>
-      <!-- Test -->
-        <!-- <p class="leading-relaxed">Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan. fdggggggggggggggggggggg. gggggggggggggggggggggggg ggggggggggggggdasssssssssss, ssssssssssssssssssss</p> -->
+     
        <!--Color  -->
         <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
           <div class="flex">

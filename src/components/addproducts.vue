@@ -45,15 +45,15 @@
         <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
           <div class="flex">
             <span class="mr-3">Color</span>
-            <button @click="handleColor(1, 'red')" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_name == 'red'}).length}" class="border-2 border-gray-300 ml-1 bg-red-500 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button @click="handleColor(2, 'blue')" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_name == 'blue'}).length}" class="border-2 border-gray-300 ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button @click="handleColor(3, 'green')" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_name == 'green'}).length}" class="border-2 border-gray-300 ml-1 bg-green-500 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button @click="handleColor(4, 'yellow')" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_name == 'yellow'}).length}" class="border-2 border-gray-300 ml-1 bg-yellow-400 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button @click="handleColor(5, 'purple')" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_name == 'purple'}).length}" class="border-2 border-gray-300 ml-1 bg-purple-500 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button @click="handleColor(6, 'white')" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_name == 'white'}).length}" class="border-2 border-gray-300 ml-1 bg-white rounded-full w-6 h-6 focus:outline-none"></button>
-            <button @click="handleColor(7, 'pink')" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_name == 'pink'}).length}" class="border-2 border-gray-300 ml-1 bg-pink-500 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button @click="handleColor(8, 'orange')" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_name == 'orange'}).length}" class="border-2 border-gray-300 ml-1 bg-yellow-600 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button @click="handleColor(9, 'black')" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_name == 'black'}).length}" class="border-2 border-gray-300 ml-1 bg-black rounded-full w-6 h-6 focus:outline-none"></button>
+            <button @click="handleColor(1)" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_id == 1}).length}" class="border-2 border-gray-300 ml-1 bg-red-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button @click="handleColor(2)" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_id == 2}).length}" class="border-2 border-gray-300 ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button @click="handleColor(3)" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_id == 3}).length}" class="border-2 border-gray-300 ml-1 bg-green-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button @click="handleColor(4)" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_id == 4}).length}" class="border-2 border-gray-300 ml-1 bg-yellow-400 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button @click="handleColor(5)" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_id == 5}).length}" class="border-2 border-gray-300 ml-1 bg-purple-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button @click="handleColor(6)" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_id == 6}).length}" class="border-2 border-gray-300 ml-1 bg-white rounded-full w-6 h-6 focus:outline-none"></button>
+            <button @click="handleColor(7)" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_id == 7}).length}" class="border-2 border-gray-300 ml-1 bg-pink-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button @click="handleColor(8)" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_id == 8}).length}" class="border-2 border-gray-300 ml-1 bg-yellow-600 rounded-full w-6 h-6 focus:outline-none"></button>
+            <button @click="handleColor(9)" :class="{'border-green-500': collectdata.product_colors.filter(product_color => {return product_color.color_id == 9}).length}" class="border-2 border-gray-300 ml-1 bg-black rounded-full w-6 h-6 focus:outline-none"></button>
           </div>
         </div>
         <!-- Price -->
@@ -90,14 +90,16 @@ export default {
 data() {
         return {
           errors: [],
-          image:""   ,  
+          image: "",
+          image_file: null,  
           collectdata: {
-              product_images : null,
+              product_image : null,
               product_name: null,
               product_manufactured_date: null,
               product_description : null,
               product_price: null,
-              product_colors: []
+              product_colors: [],
+              product_brand: null
           },
         }
     },
@@ -108,7 +110,8 @@ data() {
     },
     uploadImage(event) {
             var input = event.target
-            this.collectdata.product_images  = input.files[0].name;
+            this.image_file = input.files[0];
+            this.collectdata.product_image  = input.files[0].name;
             if(input.files && input.files[0]){
                 var reader = new FileReader();
                 reader.onload = (e) => { this.image = e.target.result; } 
@@ -119,20 +122,22 @@ data() {
             // this.errordata();
             // if (this.errors.length > 0) {
             //     return;
-            // }     
+            // }
+            this.collectdata.product_code = null
+            this.collectdata.product_brand = {'brand_id': 1}
             fetch(baseURL+"/add_product", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
                 },
                 body: JSON.stringify(this.collectdata),
-            });    
+            });              
     },
 
     errordata() {          
         this.errors = [];
 
-        if(this.collectdata.product_images == null){
+        if(this.collectdata.product_image == null){
             this.errors.push("img")
         }
           if(this.collectdata.product_name == null){
@@ -149,12 +154,12 @@ data() {
         }
     },
         
-    handleColor(color_id, color_name) {
-      if (this.collectdata.product_colors.filter(product_color => {return product_color.color_name == color_name}).length) {
-        this.collectdata.product_colors = this.collectdata.product_colors.filter(product_color => {return product_color.color_name !== color_name});
+    handleColor(color_id) {
+      if (this.collectdata.product_colors.filter(product_color => {return product_color.color_id == color_id}).length) {
+        this.collectdata.product_colors = this.collectdata.product_colors.filter(product_color => {return product_color.color_id !== color_id});
       }
       else {
-        this.collectdata.product_colors.push({color_id: color_id, color_name: color_name});
+        this.collectdata.product_colors.push({color_id: color_id});
       }
       console.log(this.collectdata.product_colors)
     }

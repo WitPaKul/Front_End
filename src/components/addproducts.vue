@@ -295,39 +295,20 @@ data() {
             // }
             this.collectdata.product_code = null
             this.collectdata.product_brand = {'brand_id': 1}
-            await fetch(baseURL+"/add_product", {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(this.collectdata),
-            }).then(response => {
-                return response.json()
+            const options = {
+              headers: {'content-type': 'application/json'}
+            };
+            await axios.post(baseURL+"/add_product", JSON.stringify(this.collectdata), options)
+            .then(response => {
+                return response.data
             })
             .then(data => {
-                // console.log(data);
-                // console.log(this.collectdata.product_image);
                 const fileInput = document.querySelector('#imageFile') ;
                 const formData  = new FormData();
 
                 formData.append("file", fileInput.files[0]);
                 axios.post("http://localhost:5000/image/add/" + data + "_" + this.collectdata.product_image, formData)
-            })
-
-            // fetch(baseURL + "/image/add/2", {
-            //   method: 'POST',
-            //   headers: {'Content-Type':'multipart/form-data'},
-            //   body: formData,
-            //   mode: 'no-cors'
-            // });
-            
-            // fetch(baseURL + "/image/add/2", {        
-            //    method: 'POST',         
-            //    headers: {'Content-Type':'multipart/form-data'},        
-            //     body: new FormData(document.getElementById('imageFile'))     })         
-            //     .then((response) => response.json());
-    
-                 
+            })                 
     },
 
     errordata() {          

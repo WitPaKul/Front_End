@@ -25,6 +25,7 @@
 </template>
 
 <script>
+const axios = require("axios");
 import productItem from './productItem.vue'
 
 const baseURL = "http://localhost:5000"
@@ -44,12 +45,10 @@ export default {
         msg: String
     },
     methods: {
-        refreshProducts() {
-            return fetch(baseURL + "/all")
-                .then(response => response.json())
-                .then(data => {
-                    this.products = data
-                })
+        async refreshProducts() {
+            var res = await axios.get(baseURL + "/all");
+            this.products = res.data;
+            return res.data;
         },
         handleAddProduct() {
             this.$emit("handleAddProductEmit");

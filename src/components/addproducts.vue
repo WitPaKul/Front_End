@@ -27,6 +27,22 @@
           :src="image || 'https://dummyimage.com/800x800'"
         />
         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+          <!-- Brand Name -->
+          <h2 class="text-sm title-font text-gray-500 tracking-widest">
+            Brand Name
+          </h2>
+          <h2
+            v-if="errors.indexOf('NoBrandName') !== -1"
+            class="text-sm title-font text-red-600"
+          >
+            * Please Enter Brand Name
+          </h2>
+          <div class="flex mb-4">
+            <select v-model="collectdata.product_brand.brand_id" id="product-brand">
+              <option disabled value="">Please select one</option>
+              <option v-for="brand in brand_option" v-bind:value="brand.brand_id" :key="brand.brand_id">{{brand.brand_name}}</option>
+            </select>
+          </div>
           <!--PRODUCT -->
           <h2 class="text-sm title-font text-gray-500 tracking-widest">
             PRODUCT NAME
@@ -268,9 +284,15 @@ data() {
               product_description : null,
               product_price: null,
               product_colors: [],
-              product_brand: null
+              product_brand : {brand_id: null},
           },
-          product_code: 0
+          product_code: 0,
+          brand_option: [
+            {brand_id: 1, brand_name: "PRISMA"},
+            {brand_id: 2, brand_name: "Tier1Anime"},
+            {brand_id: 3, brand_name: "Beonit"},
+            {brand_id: 4, brand_name: "Witpakul"}
+          ]
         }
     },
 
@@ -288,13 +310,12 @@ data() {
                 reader.readAsDataURL(input.files[0])
             }        
         },  
-    async AddForm() {           
+    async AddForm() {
             // this.errordata();
             // if (this.errors.length > 0) {
             //     return;
             // }
             this.collectdata.product_code = null
-            this.collectdata.product_brand = {'brand_id': 1}
             const options = {
               headers: {'content-type': 'application/json'}
             };
@@ -317,6 +338,9 @@ data() {
 
         if(this.collectdata.product_image == null){
             this.errors.push("img")
+        }
+        if(this.collectdata.product_brand.brand_id == null){
+            this.errors.push("NoBrandName")
         }
           if(this.collectdata.product_name == null){
             this.errors.push("NoProductName")

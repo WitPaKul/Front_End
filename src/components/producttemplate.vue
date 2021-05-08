@@ -16,7 +16,7 @@
   </div>
   <div class="container py-12 mx-auto">
     <div class="lg:w-4/5 mx-auto flex flex-wrap">
-      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" v-bind:src="'http://localhost:5000' + product.product_image">
+      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" v-bind:src="'http://localhost:5000/image/get/' + product.product_image">
       
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
          <div class="flex ">
@@ -50,7 +50,7 @@
           </div>
         </div>
         <div class="flex ">
-          <span class="title-font font-medium text-2xl text-gray-900">$58.00</span>
+          <span class="title-font font-medium text-2xl text-gray-900">฿{{product.product_price}}</span>
           <button class="flex ml-auto text-white  bg-blue border-0 py-2 px-6 focus:outline-none hover:bg-blue-500 rounded">Add to cart</button>
         <button class="flex-initial ml-4 text-white  bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600  rounded">Edit</button>
         </div>
@@ -85,8 +85,12 @@ export default {
       this.color = color
     },
     handleDelete() {
-      axios.delete(baseURL + "/delete_product/" + this.product.product_code);
-      this.handleViewProducts()
+      
+      axios.delete(baseURL + "/delete_product/" + this.product.product_code);   
+      axios.delete(baseURL + "/image/delete/" + this.product.product_image)
+      console.log(this.product.product_image);     
+    // this.handleViewProducts()
+
     },
   }
 };

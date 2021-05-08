@@ -308,7 +308,8 @@ data() {
 
                 formData.append("file", fileInput.files[0]);
                 axios.post("http://localhost:5000/image/add/" + data + "_" + this.collectdata.product_image, formData)
-            })                 
+            });
+            this.handleViewProducts();
     },
 
     errordata() {          

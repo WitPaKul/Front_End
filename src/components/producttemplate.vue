@@ -84,6 +84,7 @@ export default {
     handleColor(color) {
       this.color = color
     },
+<<<<<<< HEAD
     handleDelete() {
       
       axios.delete(baseURL + "/delete_product/" + this.product.product_code);   
@@ -91,6 +92,11 @@ export default {
       console.log(this.product.product_image);     
     // this.handleViewProducts()
 
+=======
+    async handleDelete() {
+      await axios.delete(baseURL + "/delete_product/" + this.product.product_code);
+      this.handleViewProducts()
+>>>>>>> cae902ba923b535cae650867f26c5077cdec58cc
     },
   }
 };

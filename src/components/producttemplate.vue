@@ -52,7 +52,7 @@
         <div class="flex ">
           <span class="title-font font-medium text-2xl text-gray-900">฿{{product.product_price}}</span>
           <button class="flex ml-auto text-white  bg-blue border-0 py-2 px-6 focus:outline-none hover:bg-blue-500 rounded">Add to cart</button>
-        <button class="flex-initial ml-4 text-white  bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600  rounded">Edit</button>
+        <button class="flex-initial ml-4 text-white  bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded" @click="handleEditProduct">Edit</button>
         </div>
       </div>
     </div>
@@ -80,6 +80,9 @@ export default {
     },
     handleAddProduct() {
         this.$emit("handleAddProductEmit");
+    },
+    handleEditProduct() {
+        this.$emit("handleEditProductEmit", this.product);
     },
     handleColor(color) {
       this.color = color

@@ -8,4 +8,5 @@ import footerbar from './components/footerbar.vue'
 const app = createApp(App)
 app.component('navbar', navbar)
 app.component('footerbar', footerbar)
+app.config.globalProperties.$baseURL = "http://localhost:5000"
 app.use(router).mount('#app')

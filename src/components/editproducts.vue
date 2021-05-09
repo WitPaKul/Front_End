@@ -268,7 +268,6 @@
 
 <script>
 const axios = require("axios");
-const baseURL = "http://localhost:5000"
 
 export default {
   name: "editproducts",
@@ -321,7 +320,7 @@ data() {
       const options = {
               headers: {'content-type': 'application/json'}
             };
-            await axios.put(baseURL+"/edit_product/" + this.new_product.product_code, JSON.stringify(this.new_product), options)
+            await axios.put(this.$baseURL+"/edit_product/" + this.new_product.product_code, JSON.stringify(this.new_product), options)
             .then(response => {
                 return response.data
             })
@@ -332,7 +331,7 @@ data() {
 
                 formData.append("file", fileInput.files[0]);
                 try {
-                  await axios.delete(baseURL + "/image/delete/" + self.old_image);
+                  await axios.delete(this.$baseURL + "/image/delete/" + self.old_image);
                 }
                 catch (e) {
                   console.log(e)

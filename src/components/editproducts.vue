@@ -277,26 +277,27 @@ export default {
   },
 
 data() {
-        return {
-          errors: [],
-          image: "",
-          image_file: null,  
-          new_product: {
-              product_image : null,
-              product_name: null,
-              product_manufactured_date: null,
-              product_description : null,
-              product_price: null,
-              product_colors: [],
-              product_brand : {brand_id: null},
-          },
-          brand_option: [
-            {brand_id: 1, brand_name: "PRISMA"},
-            {brand_id: 2, brand_name: "Tier1Anime"},
-            {brand_id: 3, brand_name: "Beonit"},
-            {brand_id: 4, brand_name: "Witpakul"}
-          ]
-        }
+  return {
+    errors: [],
+    image: "",
+    image_file: null,  
+    old_image: null,
+    new_product: {
+        product_image : null,
+        product_name: null,
+        product_manufactured_date: null,
+        product_description : null,
+        product_price: null,
+        product_colors: [],
+        product_brand : {brand_id: null},
+    },
+    brand_option: [
+      {brand_id: 1, brand_name: "PRISMA"},
+      {brand_id: 2, brand_name: "Tier1Anime"},
+      {brand_id: 3, brand_name: "Beonit"},
+      {brand_id: 4, brand_name: "Witpakul"}
+    ]
+  }
     },
 
   methods: {
@@ -314,6 +315,9 @@ data() {
             }        
         },  
     async handle_save() {
+      this.new_product.product_image = this.new_product.product_code + "_" + this.new_product.product_image
+      
+      var self = this
       const options = {
               headers: {'content-type': 'application/json'}
             };
@@ -321,17 +325,22 @@ data() {
             .then(response => {
                 return response.data
             })
-            .then(data => {
-              if (this.image_file) {
+            .then(async function() {
+              if (self.image_file) {
                 const fileInput = document.querySelector('#imageFile') ;
                 const formData  = new FormData();
 
                 formData.append("file", fileInput.files[0]);
-                axios.put("http://localhost:5000/image/add/" + data + "_" + this.collectdata.product_image, formData)
+                try {
+                  await axios.delete(baseURL + "/image/delete/" + self.old_image);
+                }
+                catch (e) {
+                  console.log(e)
+                }
+                await axios.post("http://localhost:5000/image/add/" + self.new_product.product_image, formData)
               }
               else {
-                this.new_product.product_image = this.product.product_image
-                console.log(this.new_product.product_image)
+                self.new_product.product_image = self.product.product_image
               }
             });
       this.$emit("handleShowProductEmit", this.new_product);
@@ -374,6 +383,7 @@ data() {
   },
   mounted() {
     this.new_product = this.product
+    this.old_image = this.product.product_image
   }
 };
 </script>

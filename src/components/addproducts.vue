@@ -255,8 +255,10 @@
             </button>
             <button
               class="flex-initial text-white ml-4 bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
-            >
+            @click="CancelFrom"
+           >
               Cancel
+
             </button>
           </div>
         </div>
@@ -311,10 +313,10 @@ data() {
             }        
         },  
     async AddForm() {
-            // this.errordata();
-            // if (this.errors.length > 0) {
-            //     return;
-            // }
+            this.errordata();
+            if (this.errors.length > 0) {
+                return;
+            }
             this.collectdata.product_code = null
             const options = {
               headers: {'content-type': 'application/json'}
@@ -331,6 +333,9 @@ data() {
                 axios.post("http://localhost:5000/image/add/" + data + "_" + this.collectdata.product_image, formData)
             });
             this.handleViewProducts();
+    },
+      CancelFrom() {
+      this.$emit("handleViewProductsEmit");
     },
 
     errordata() {          

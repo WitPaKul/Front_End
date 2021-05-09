@@ -22,9 +22,9 @@
     <div class="container px-5 py-24 mx-auto">
       <div class="lg:w-4/5 mx-auto flex flex-wrap">
         <img
-          alt="ecommerce"
+        
           class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-          :src="image || 'https://dummyimage.com/800x800'"
+          v-bind:src="image || 'http://localhost:5000/image/get/' + product.product_image"
         />
         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <!-- Brand Name -->
@@ -315,9 +315,14 @@ data() {
             }        
         },  
     async handle_save() {
-      this.new_product.product_image = this.new_product.product_code + "_" + this.new_product.product_image
-      
-      var self = this
+    //  this.new_product.product_image = this.new_product.product_code 
+      this.errordata();
+            if (this.errors.length > 0) {
+                return;
+            }
+            console.log(this.errors.length)
+            
+      var self = this    
       const options = {
               headers: {'content-type': 'application/json'}
             };
@@ -329,7 +334,7 @@ data() {
               if (self.image_file) {
                 const fileInput = document.querySelector('#imageFile') ;
                 const formData  = new FormData();
-
+                 console.log(self.image_file)
                 formData.append("file", fileInput.files[0]);
                 try {
                   await axios.delete(baseURL + "/image/delete/" + self.old_image);
@@ -341,33 +346,38 @@ data() {
               }
               else {
                 self.new_product.product_image = self.product.product_image
+                 console.log( self.new_product.product_image )
+                  console.log(self.product.product_image)
               }
+              
             });
+           
       this.$emit("handleShowProductEmit", this.new_product);
+      location.reload();
     },  
     handle_cancel() {
-      this.$emit("handleShowProductEmit", this.product);
+      this.$emit("handleViewProductsEmit", this.product);
     },
 
     errordata() {          
         this.errors = [];
 
-        if(this.new_product.product_image == null){
+        if(this.new_product.product_image == ""){
             this.errors.push("img")
         }
-        if(this.new_product.product_brand.brand_id == null){
+        if(this.new_product.product_brand.brand_id == ""){
             this.errors.push("NoBrandName")
         }
-          if(this.new_product.product_name == null){
+          if(this.new_product.product_name == ""){
             this.errors.push("NoProductName")
         }
-            if(this.new_product.product_manufactured_date == null){
+            if(this.new_product.product_manufactured_date == ""){
             this.errors.push("NoDate")
         }
-          if(this.new_product.product_description == null){
+          if(this.new_product.product_description == ""){
             this.errors.push("Description")
         }
-          if(this.new_product.product_price == null){
+          if(this.new_product.product_price == ""){
             this.errors.push("Noprice")
         }
     },

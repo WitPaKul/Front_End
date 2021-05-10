@@ -314,7 +314,9 @@ data() {
             }        
         },  
     async handle_save() {
-     this.new_product.product_image = this.new_product.product_code + "_" + this.new_product.product_image
+      if (this.image_file) {
+        this.new_product.product_image = this.new_product.product_code + "_" + this.new_product.product_image
+      }  
       this.errordata();
             if (this.errors.length > 0) {
                 return;

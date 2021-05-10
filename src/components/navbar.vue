@@ -6,7 +6,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 rounded-full" viewBox="0 0 24 24">
                         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                     </svg>
-                    <router-link to="/">
+                    <router-link to="/" class="title">
                         <p class="font-semibold text-xl text-black">Witpakul Shop</p>
                     </router-link>
                 </div>
@@ -77,6 +77,9 @@ h1,h2,h3, p{
     background-color: #1AC6D4;
     border-radius: 25px;
     /* border: 4px solid #1AC6D4; */
+}
+.title {
+    background-color: #1AC6D400;
 }
 
 </style>

@@ -28,7 +28,7 @@
         />
         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <!-- Brand Name -->
-          <!-- <h2 class="text-sm title-font text-gray-500 tracking-widest">
+          <h2 class="text-sm title-font text-gray-500 tracking-widest">
             Brand Name
           </h2>
           <h2
@@ -42,7 +42,7 @@
               <option disabled value="">Please select one</option>
               <option v-for="brand in brand_option" v-bind:value="brand.brand_id" :key="brand.brand_id">{{brand.brand_name}}</option>
             </select>
-          </div> -->
+          </div>
           <!--PRODUCT -->
           <h2 class="text-sm title-font text-gray-500 tracking-widest">
             PRODUCT NAME

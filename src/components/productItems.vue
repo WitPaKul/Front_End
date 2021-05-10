@@ -1,7 +1,7 @@
 <template>
     <section class="text-black body-font px-20">
         <div class="md:h-32 lg:h-16 md:items-center">
-            <div class="p-5 pl-20 text-purple-dark lg:float-left flex">
+            <div class="p-5 lg:pl-20 text-purple-dark lg:float-left flex">
                 <button type='button' @click="handleViewProducts" class="font-medium text-xl text-purple-dark border-transparent focus:outline-none">
                     View Products
                 </button>
@@ -12,7 +12,7 @@
                     Add Product
                 </button>
             </div>
-            <div class="p-5 lg:float-right pr-16">
+            <div class="p-5 lg:float-right lg:pr-16">
                 <input type="text" id="search" v-model="searchFilterText" name="search" class="h-8 bg-blue-light rounded px-8 py-2 border-transparent focus:outline-none">
             </div>
         </div>

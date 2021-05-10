@@ -269,7 +269,6 @@
 
 <script>
 const axios = require("axios");
-const baseURL = "http://localhost:5000"
 
 export default {
   name: "addproducts",
@@ -321,7 +320,7 @@ data() {
             const options = {
               headers: {'content-type': 'application/json'}
             };
-            await axios.post(baseURL+"/add_product", JSON.stringify(this.collectdata), options)
+            await axios.post(this.$baseURL+"/add_product", JSON.stringify(this.collectdata), options)
             .then(response => {
                 return response.data
             })
@@ -330,7 +329,7 @@ data() {
                 const formData  = new FormData();
 
                 formData.append("file", fileInput.files[0]);
-                axios.post("http://localhost:5000/image/add/" + data + "_" + this.collectdata.product_image, formData)
+                axios.post(this.$baseURL + "/image/add/" + data + "_" + this.collectdata.product_image, formData)
             });
             this.handleViewProducts();
     },

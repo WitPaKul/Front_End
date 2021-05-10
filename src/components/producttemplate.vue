@@ -62,7 +62,6 @@
 
 <script>
 const axios = require("axios");
-const baseURL = "http://localhost:5000"
 
 export default {
   props:{
@@ -88,8 +87,8 @@ export default {
       this.color = color
     },
     async handleDelete() {
-      await axios.delete(baseURL + "/delete_product/" + this.product.product_code);   
-      await axios.delete(baseURL + "/image/delete/" + this.product.product_image);
+      await axios.delete(this.$baseURL + "/delete_product/" + this.product.product_code);   
+      await axios.delete(this.$baseURL + "/image/delete/" + this.product.product_image);
       this.handleViewProducts();
 
     },

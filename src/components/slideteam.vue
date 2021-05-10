@@ -1,5 +1,5 @@
 <template> 
-        <img  src="@/assets/Team/Team1.png" >
+        <img class="object-cover object-center " src="@/assets/Team/Team1.png"  >
 </template>
 
 <script>

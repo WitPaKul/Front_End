@@ -24,7 +24,7 @@
         <img
         
           class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-          v-bind:src="image || 'http://localhost:5000/image/get/' + product.product_image"
+          v-bind:src="image || this.$baseURL + '/image/get/' + product.product_image"
         />
         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <!-- Brand Name -->
@@ -341,7 +341,7 @@ data() {
                 catch (e) {
                   console.log(e)
                 }
-                await axios.post("http://localhost:5000/image/add/" + self.new_product.product_image, formData)
+                await axios.post(this.$baseURL + "/image/add/" + self.new_product.product_image, formData)
               }
               else {
                 self.new_product.product_image = self.product.product_image

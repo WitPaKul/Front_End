@@ -1,7 +1,7 @@
 <template>
     <div class="lg:w-1/4 md:w-1/4 p-5 w-full">
         <a class="block relative h-48 rounded overflow-hidden">
-        <img alt="ecommerce" class="object-cover object-center w-full h-full block" v-bind:src="'http://localhost:5000/image/get/' + product.product_image">
+        <img alt="ecommerce" class="object-cover object-center w-full h-full block" v-bind:src="this.$baseURL + '/image/get/' + product.product_image">
         </a>
         <div class="mt-4">
         <h3 class="text-black text-sm tracking-widest title-font mb-1 text-left">{{brandName}}</h3>

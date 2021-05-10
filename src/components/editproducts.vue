@@ -243,7 +243,7 @@
             v-if="errors.indexOf('img') !== -1"
             class="text-sm title-font text-red-600 pr-32"
           >
-            * Please Select Photo 
+            * Please Select Photo
           </h2>
           <!--ADD  Cancel-->
           <div class="flex mt-6">
@@ -314,11 +314,7 @@ data() {
             }        
         },  
     async handle_save() {
-       
-        var character = "_"
-        if (this.new_product.product_image.includes(character) == false) {
-      this.new_product.product_image = this.new_product.product_code + "_" + this.new_product.product_image
-            }  
+     this.new_product.product_image = this.new_product.product_code + "_" + this.new_product.product_image
       this.errordata();
             if (this.errors.length > 0) {
                 return;
@@ -364,7 +360,7 @@ data() {
     errordata() {          
         this.errors = [];
 
-        if(this.new_product.product_image == "" ){
+        if(this.new_product.product_image == ""){
             this.errors.push("img")
         }
         if(this.new_product.product_brand.brand_id == ""){

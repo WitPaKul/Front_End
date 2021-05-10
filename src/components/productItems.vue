@@ -13,7 +13,7 @@
                 </button>
             </div>
             <div class="p-5 lg:float-right pr-16">
-                <input type="text" id="search" v-model="searchFilterText" name="search" class="h-8 bg-blue-light rounded md:px-16 md:py-2 border-transparent focus:outline-none">
+                <input type="text" id="search" v-model="searchFilterText" name="search" class="h-8 bg-blue-light rounded px-8 py-2 border-transparent focus:outline-none">
             </div>
         </div>
         <div class="container px-5 py-12 mx-auto md:w-auto">

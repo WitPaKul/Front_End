@@ -18,14 +18,18 @@
         </div>
         <div class="container px-5 py-12 mx-auto">
             <div id="products" class="flex flex-wrap -m-4">
-                <product-item v-for="product in filterSearch()" :key="product.id" :brand-name="product.brandName" :product-name="product.productName" :product-price="product.productPrice"></product-item>
+                <product-item v-for="product in filterSearch()" :key="product.product_code" :product="product" :brand-name="product.product_brand.brand_name" :product-name="product.product_name" :product-price="product.product_price" @handleShowProductEmit="handleShowProduct"></product-item>
             </div>
         </div>
     </section>
 </template>
 
 <script>
+const axios = require("axios");
 import productItem from './productItem.vue'
+
+const baseURL = "http://localhost:5000"
+
 export default {
     name: 'productItems',
     data() {
@@ -41,24 +45,16 @@ export default {
         msg: String
     },
     methods: {
-        getProduct(productIdx) {
-            var arr1 = ["ShiragaP", "Peony"];
-            var arr2 = ["Crepe", "Cake", "Brownie", "Icecream"];
-            return {
-                "brandName": "PRISMA",
-                "productName": productIdx + " " + arr1[Math.floor(Math.random() * arr1.length)] + " " + arr2[Math.floor(Math.random() * arr2.length)],
-                "productPrice": 390
-            };
-        },
-        getProducts() {
-            var products = []
-            for (var i = 1; i <= 10; i++) {
-                products.push(this.getProduct(i));
-            }
-            return products
+        async refreshProducts() {
+            var res = await axios.get(baseURL + "/all");
+            this.products = res.data;
+            return res.data;
         },
         handleAddProduct() {
             this.$emit("handleAddProductEmit");
+        },
+        handleShowProduct(productCode) {
+            this.$emit("handleShowProductEmit", productCode);
         },
         filterSearch() {
             var splitTexts = this.searchFilterText.split(" ");
@@ -73,7 +69,7 @@ export default {
         },
     },
     mounted() {
-        this.products = this.getProducts()
+        this.refreshProducts();
     }
 }
 </script>

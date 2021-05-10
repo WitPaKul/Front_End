@@ -1,7 +1,7 @@
 <template>
     <section class="text-black body-font px-20">
-        <div class="h-12 md:items-center">
-            <div class="p-5 pl-20 text-purple-dark md:float-left flex">
+        <div class="md:h-32 lg:h-16 md:items-center">
+            <div class="p-5 pl-20 text-purple-dark lg:float-left flex">
                 <button type='button' @click="handleViewProducts" class="font-medium text-xl text-purple-dark border-transparent focus:outline-none">
                     View Products
                 </button>
@@ -12,11 +12,11 @@
                     Add Product
                 </button>
             </div>
-            <div class="p-5 md:float-right pr-16">
-                <input type="text" id="search" v-model="searchFilterText" name="search" class="bg-blue-light rounded md:px-16 md:py-2 border-transparent focus:outline-none">
+            <div class="p-5 lg:float-right pr-16">
+                <input type="text" id="search" v-model="searchFilterText" name="search" class="h-8 bg-blue-light rounded md:px-16 md:py-2 border-transparent focus:outline-none">
             </div>
         </div>
-        <div class="container px-5 py-12 mx-auto">
+        <div class="container px-5 py-12 mx-auto md:w-auto">
             <div id="products" class="flex flex-wrap -m-4">
                 <product-item v-for="product in filterSearch()" :key="product.product_code" :product="product" :brand-name="product.product_brand.brand_name" :product-name="product.product_name" :product-price="product.product_price" @handleShowProductEmit="handleShowProduct"></product-item>
             </div>

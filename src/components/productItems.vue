@@ -63,7 +63,7 @@ export default {
             }
 
             return this.products.filter(product => {
-                return splitTexts.some(splitText => product.productName.toLowerCase().includes(splitText.toLowerCase()))
+                return splitTexts.some(splitText => product.product_name.toLowerCase().includes(splitText.toLowerCase()))
             });
         },
     },

@@ -17,23 +17,23 @@
         </div>
         <div :class="{'block': showFullNavbarFlag, 'hidden': !showFullNavbarFlag}" class="w-full flex-grow lg:flex lg:items-center lg:w-auto">
             <div class="text-sm lg:flex lg:justify-center lg:flex-grow">
-                <div class="flex items-center flex-shrink-0">
-                    <router-link to="/about" class="menu-option">
-                        <button class="font-medium text-xl text-purple-dark block my-2 lg:inline-block lg:my-0 text-teal-200 hover:text-white mx-4">
+                <div class="flex items-center flex-shrink-0 ">
+                    <router-link to="/about" class="text-purple-dark menu-option">
+                        <button class="font-medium text-xl  block my-2 lg:inline-block lg:my-0 text-teal-200 hover:text-white mx-4">
                             <p>About</p>
                         </button>
                     </router-link> 
                 </div>
                 <div class="flex items-center flex-shrink-0">
-                    <router-link to="/products" class="menu-option">
-                        <button class="font-medium text-xl text-purple-dark block my-2 lg:inline-block lg:my-0 text-teal-200 hover:text-white mx-4">
+                    <router-link to="/products" class="text-purple-dark menu-option">
+                        <button class="font-medium text-xl block my-2 lg:inline-block lg:my-0 text-teal-200 hover:text-white mx-4">
                             <p>Products</p>
                         </button>
                     </router-link> 
                 </div>
                 <div class="flex items-center flex-shrink-0">
-                    <router-link to="/team" class="menu-option">
-                        <button class="font-medium text-xl text-purple-dark block my-2 lg:inline-block lg:my-0 text-teal-200 hover:text-white mx-4">
+                    <router-link to="/team" class="text-purple-dark menu-option">
+                        <button class="font-medium text-xl block my-2 lg:inline-block lg:my-0 text-teal-200 hover:text-white mx-4">
                             <p>Team</p>
                         </button>
                     </router-link>
@@ -69,14 +69,14 @@ h1,h2,h3, p{
     font-family: 'Mitr', sans-serif;
 }
 .menu-option {
-    color: #FFFFFF;
     border-radius: 25px;
     border: 4px solid #00000000;
 }
 .router-link-active {
     color: #FFFFFF;
+    background-color: #1AC6D4;
     border-radius: 25px;
-    border: 4px solid #1AC6D4;
+    /* border: 4px solid #1AC6D4; */
 }
 
 </style>

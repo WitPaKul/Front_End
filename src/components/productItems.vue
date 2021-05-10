@@ -44,8 +44,8 @@ export default {
         msg: String
     },
     methods: {
-        async refreshProducts() {
-            var res = await axios.get(this.$baseURL + "/all");
+        async refreshProducts(baseURL) {
+            var res = await axios.get(baseURL + "/all");
             this.products = res.data;
             return res.data;
         },
@@ -68,7 +68,7 @@ export default {
         },
     },
     mounted() {
-        this.refreshProducts();
+        this.refreshProducts(this.$baseURL);
     }
 }
 </script>

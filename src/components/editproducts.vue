@@ -24,7 +24,7 @@
         <img
         
           class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-          v-bind:src="image || this.$baseURL + '/image/get/' + product.product_image"
+          v-bind:src="image || $baseURL + '/image/get/' + product.product_image"
         />
         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <!-- Brand Name -->
@@ -352,7 +352,6 @@ data() {
             });
            
       this.$emit("handleShowProductEmit", this.new_product);
-      location.reload();
     },  
     handle_cancel() {
       this.$emit("handleViewProductsEmit", this.product);

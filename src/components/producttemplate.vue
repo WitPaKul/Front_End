@@ -16,7 +16,7 @@
   </div>
   <div class="container py-12 mx-auto">
     <div class="lg:w-4/5 mx-auto flex flex-wrap">
-      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" v-bind:src="this.$baseURL + '/image/get/' + product.product_image">
+      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" v-bind:src="$baseURL + '/image/get/' + product.product_image">
       
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
          <div class="flex ">

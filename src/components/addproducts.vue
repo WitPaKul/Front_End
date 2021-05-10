@@ -226,7 +226,7 @@
               v-if="errors.indexOf('Noprice') !== -1"
               class="text-sm title-font text-red-600 pl-4"
             >
-              * Please Enter Price
+              * Please Enter Valid Price
             </h2>
           </div>
           <!-- Photo -->
@@ -355,7 +355,7 @@ data() {
           if(this.collectdata.product_description == null){
             this.errors.push("Description")
         }
-          if(this.collectdata.product_price == null){
+          if(this.collectdata.product_price == null || this.collectdata.product_price <= 0){
             this.errors.push("Noprice")
         }
     },

@@ -24,7 +24,7 @@
         <img
         
           class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-          v-bind:src="image || $baseURL + '/image/get/' + product.product_image"
+          v-bind:src="image"
         />
         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <!-- Brand Name -->
@@ -226,7 +226,7 @@
               v-if="errors.indexOf('Noprice') !== -1"
               class="text-sm title-font text-red-600 pl-4"
             >
-              * Please Enter Price
+              * Please Enter Valid Price
             </h2>
           </div>
           <!-- Photo -->
@@ -314,7 +314,7 @@ data() {
             }        
         },  
     async handle_save() {
-    //  this.new_product.product_image = this.new_product.product_code 
+     this.new_product.product_image = this.new_product.product_code + "_" + this.new_product.product_image
       this.errordata();
             if (this.errors.length > 0) {
                 return;
@@ -325,7 +325,7 @@ data() {
       const options = {
               headers: {'content-type': 'application/json'}
             };
-            await axios.put(this.$baseURL+"/edit_product/" + this.new_product.product_code, JSON.stringify(this.new_product), options)
+            await axios.put(self.$baseURL + "/edit_product", JSON.stringify(this.new_product), options)
             .then(response => {
                 return response.data
             })
@@ -336,12 +336,12 @@ data() {
                  console.log(self.image_file)
                 formData.append("file", fileInput.files[0]);
                 try {
-                  await axios.delete(this.$baseURL + "/image/delete/" + self.old_image);
+                  await axios.delete(self.$baseURL + "/image/delete/" + self.old_image);
                 }
                 catch (e) {
                   console.log(e)
                 }
-                await axios.post(this.$baseURL + "/image/add/" + self.new_product.product_image, formData)
+                await axios.post(self.$baseURL + "/image/add/" + self.new_product.product_image, formData)
               }
               else {
                 self.new_product.product_image = self.product.product_image
@@ -375,7 +375,7 @@ data() {
           if(this.new_product.product_description == ""){
             this.errors.push("Description")
         }
-          if(this.new_product.product_price == ""){
+          if(this.new_product.product_price == "" || this.new_product.product_price <= 0){
             this.errors.push("Noprice")
         }
     },
@@ -390,8 +390,9 @@ data() {
     }
   },
   mounted() {
-    this.new_product = this.product
-    this.old_image = this.product.product_image
+    this.new_product = this.product;
+    this.old_image = this.product.product_image;
+    this.image = this.$baseURL + '/image/get/' + this.product.product_image;
   }
 };
 </script>

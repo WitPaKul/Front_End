@@ -15,7 +15,8 @@
             </div>
             <!-- <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6"> -->
             <div class="xl:max-w-xl xl:w-full lg:w-1/2 w-5/6 p-4">
-                <img class="object-cover object-right rounded" alt="hero" src="https://dummyimage.com/720x600">
+                
+                  <img  class="object-cover object-right rounded" src="@/assets/Among.png" >
             </div>
 
         </div>

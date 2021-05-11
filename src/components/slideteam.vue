@@ -1,10 +1,5 @@
-<template>
-        <img
-          class="object-cover object-center "
-          alt="hero"
-          src="https://dummyimage.com/1600x450"
-        >
-      
+<template> 
+        <img class="object-cover object-center " src="@/assets/Team/Team1.png"  >
 </template>
 
 <script>

@@ -3,7 +3,7 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Products from '../views/Products.vue'
 import Team from '../views/Team.vue'
-import PageError from '../views/PageError.vue'
+
 const routes = [
   {
     path: '/',
@@ -24,11 +24,6 @@ const routes = [
     path: '/team',
     name: 'Team',
     component: Team
-  },
-  {
-    path: '/:PageError(.*)',
-    name: 'PageError',
-    component: PageError
   }
 
 ]

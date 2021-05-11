@@ -3,9 +3,10 @@
     <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
         
                 <div class="flex items-center flex-shrink-0 text-white mr-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 rounded-full" viewBox="0 0 24 24">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                    </svg>
+                    <img
+                    class="w-8 h-8 object-cover object-center rounded"
+                    src="@/assets/chicken.png"
+                    />
                     <router-link to="/" class="title">
                         <p class="font-semibold text-xl text-black">Witpakul Shop</p>
                     </router-link>
